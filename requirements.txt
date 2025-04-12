@@ -1,6 +1,8 @@
-# SQLite：默认支持，无需安装驱动
-# PostgreSQL（可选）
-psycopg2-binary==2.9.9
-
-# MySQL（可选）
-# mysqlclient==2.2.4
+fastapi==0.110.0
+uvicorn==0.27.1
+sqlalchemy==2.0.29
+pydantic==2.6.4
+passlib[bcrypt]==1.7.4
+python-jose==3.3.0
+PyJWT==2.8.0
+email-validator==2.1.0.post1
