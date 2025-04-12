@@ -1,0 +1,128 @@
+nohup: ignoring input
+INFO:     Will watch for changes in these directories: ['/home/tur/eldercare-backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [32785] using StatReload
+INFO:     Started server process [32788]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:48494 - "POST /appointments/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "appointments" does not exist
+LINE 1: INSERT INTO appointments (user_id, type, details, date) VALU...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 187, in __call__
+    raise exc
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 2364, in run_sync_in_worker_thread
+    return await future
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 864, in run
+    result = context.run(func, *args)
+  File "/home/tur/eldercare-backend/main.py", line 68, in create_appointment
+    return crud.create_appointment(db, appointment)
+  File "/home/tur/eldercare-backend/crud.py", line 47, in create_appointment
+    db.commit()
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 4489, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/tur/eldercare-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 942, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "appointments" does not exist
+LINE 1: INSERT INTO appointments (user_id, type, details, date) VALU...
+                    ^
+
+[SQL: INSERT INTO appointments (user_id, type, details, date) VALUES (%(user_id)s, %(type)s, %(details)s, %(date)s) RETURNING appointments.id]
+[parameters: {'user_id': 1, 'type': '医生', 'details': '健康检查', 'date': datetime.datetime(2025, 2, 25, 5, 46, 55, 785732)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [32788]
+INFO:     Stopping reloader process [32785]
