@@ -36,6 +36,11 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 reset_code_store = {}  # {email: (code, expiration_timestamp)}
+from database import Base, engine
+import models  # ✅ 确保导入包含你所有模型定义的文件
+
+# 👇 创建所有表（只需执行一次）
+Base.metadata.create_all(bind=engine)
 
 
 def hash_password(password: str) -> str:
