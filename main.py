@@ -75,7 +75,7 @@ app.include_router(feedback.router, prefix="/api/feedback", tags=["反馈"])  # 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 指定前端的 URL
+    allow_origins=["https://eldercare-frontend.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
