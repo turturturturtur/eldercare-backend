@@ -75,7 +75,7 @@ app.include_router(feedback.router, prefix="/api/feedback", tags=["反馈"])  # 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # ✅ 明确写出前端地址
+    allow_origins=["*"],  # 指定前端的 URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
